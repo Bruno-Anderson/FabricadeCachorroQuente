@@ -70,7 +70,7 @@ public class MinhaMain {
 
 	    public static void main(String[] args) {
 	        Aluno aluno = criarAluno();
-	        System.out.println("Escolha quantos cachorros quentes serao comprados: ");
+	        System.out.println("Escolha o numero de cachorros quentes que serao comprados: ");
 	        int quantidade = leitor.nextInt();
 	        leitor.nextLine(); 
 	        cachorroQuente cachorroQuente[] = new cachorroQuente[quantidade];
