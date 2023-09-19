@@ -80,7 +80,7 @@ public class MinhaMain {
 	        Aluno aluno = criarAluno();
 	        System.out.print("\nQuantas unidade de cachorro quente voce deseja pedir? ");
 	        int quantidade = scanner.nextInt();
-	        scanner.nextLine(); // Consumir a quebra de linha
+	        scanner.nextLine(); 
 
 	        cachorroQuente[] cachorros = new cachorroQuente[quantidade];
 	        for (int i = 0; i < quantidade; i++) {
