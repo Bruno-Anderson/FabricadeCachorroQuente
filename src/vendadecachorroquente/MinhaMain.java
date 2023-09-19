@@ -4,81 +4,59 @@ import java.util.Scanner;
 
 public class MinhaMain {
 
-	 static Scanner leitor = new Scanner(System.in);
+	 public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
 
-	    public static Aluno criarAluno() {
-	        System.out.println("Insira seu nome:");
-	        String nome = leitor.nextLine();
-	        System.out.println("Insira sua matricula:");
-	        int matricula = leitor.nextInt();
-	        leitor.nextLine();
-	        return new Aluno(matricula, nome);
-	    }
+	        System.out.println("Bem-vindo ao sistema de pedidos de cachorro-quente!");
+	        
+	        System.out.print("Digite seu nome: ");
+	        String nome = scanner.nextLine();
+	        
+	        System.out.print("Digite sua matricula: ");
+	        int matricula = scanner.nextInt();
+	        
+	        System.out.print("Quantos cachorros-quentes voce deseja pedir? ");
+	        int quantidade = scanner.nextInt();
+	        scanner.nextLine(); // Consumir a quebra de linha
+	        
+	        System.out.println("\nMonte seu cachorro-quente personalizado:");
 
-	    public static boolean decidirAdicional(String complemento) {
-	        System.out.println("Voce quer  " + complemento + "? (s/n)");
-	        String resposta;
-	        do {
-	            resposta = leitor.nextLine().toLowerCase();
-	        } while (!resposta.equals("s") && !resposta.equals("n"));
-
-	        return resposta.equals("s");
-	    }
-
-	    public static Adicional criarAdicional() {
-	        boolean maionese = decidirAdicional("maionese");
-	        boolean ketchup = decidirAdicional("ketchup");
-	        boolean ovo = decidirAdicional("ovo");
-	        boolean batatafrita = decidirAdicional("batata frita");
-	        return new Adicional(maionese, ketchup, ovo, batatafrita);
-	    }
-
-	    public static cachorroQuente criarCachorro() {
-	        System.out.print("Digite a proteiBna de sua escolha: salsicha, linguica, frango, bacon ");
-	        String proteina = leitor.nextLine();
-	        System.out.print("Digite o queijo de sua escolha: mussarela, prato, parmessao, qualho ");
-	        String queijo = leitor.nextLine();
-	        System.out.print("Digite a bebida de sua escolha: coca cola, suco do chaves, del rio ");
-	        String bebida = leitor.nextLine();
-	        return new cachorroQuente(proteina, queijo, bebida);
-	    }
-
-	    public static void impressaodepedido(pedido pedido) {
-	        System.out.println("\n\nALUNO");
-	        System.out.println("Nome: " + pedido.aluno.nome);
-	        System.out.println("Matrícula: " + pedido.aluno.matricula);
-	        for (int i = 0; i < pedido.cachorroQuente.length; i++) {
-	            System.out.println("\n\nCachorro quente n: " + (i + 1));
-	            System.out.println("Proteína: " + pedido.cachorroQuente[i].proteina);
-	            System.out.println("Queijo: " + pedido.cachorroQuente[i].queijo);
-	            System.out.println("Bebida: " + pedido.cachorroQuente[i].bebida);
+	        for (int i = 1; i <= quantidade; i++) {
+	            System.out.println("Cachorro-quente " + i + ":");
+	            
+	            System.out.print("Proteina (salsicha, linguiça, frango, bacon): ");
+	            String proteina = scanner.nextLine();
+	            
+	            System.out.print("Queijo (mussarela, prato, parmesao, coalho): ");
+	            String queijo = scanner.nextLine();
+	            
+	            System.out.print("Escolha a bebida (Coca-cola, Del Rio, Suco do Chaves): ");
+	            String bebida = scanner.nextLine();
+	            
+	            System.out.print("Adicionar Maionese (sim/nao): ");
+	            boolean maionese = scanner.nextLine().equalsIgnoreCase("sim");
+	            
+	            System.out.print("Adicionar Ketchup (sim/nao): ");
+	            boolean ketchup = scanner.nextLine().equalsIgnoreCase("sim");
+	            
+	            System.out.print("Adicionar Ovo (sim/nao): ");
+	            boolean ovo = scanner.nextLine().equalsIgnoreCase("sim");
+	            
+	            System.out.print("Adicionar Batata Frita (sim/nao): ");
+	            boolean batataFrita = scanner.nextLine().equalsIgnoreCase("sim");
+	            
+	            System.out.println("\nResumo do Cachorro-quente " + i + ":");
+	            System.out.println("Proteina: " + proteina);
+	            System.out.println("Queijo: " + queijo);
+	            System.out.println("Bebida: " + bebida);
+	            System.out.println("Complementos: " +
+	                    (maionese ? "Maionese; " : "") +
+	                    (ketchup ? "Ketchup; " : "") +
+	                    (ovo ? "Ovo; " : "") +
+	                    (batataFrita ? "Batata Frita;" : ""));
 	        }
-	        System.out.print("Complementos: ");
-	        if (pedido.adicional.maionese) {
-	            System.out.print("Maionese; ");
-	        }
-	        if (pedido.adicional.ketchup) {
-	            System.out.print("Ketchup; ");
-	        }
-	        if (pedido.adicional.ovo) {
-	            System.out.print("Ovo; ");
-	        }
-	        if (pedido.adicional.batatafrita) {
-	            System.out.print("Batata Frita;");
-	        }
-	    }
 
-	    public static void main(String[] args) {
-	        Aluno aluno = criarAluno();
-	        System.out.println("Escolha o numero de cachorros quentes que serao comprados: ");
-	        int quantidade = leitor.nextInt();
-	        leitor.nextLine(); 
-	        cachorroQuente cachorroQuente[] = new cachorroQuente[quantidade];
-	        for (int i = 0; i < quantidade; i++) {
-	            cachorroQuente[i] = criarCachorro();
-	        }
-	        Adicional adicional = criarAdicional();
-	        pedido pedido = new pedido(aluno, cachorroQuente, adicional);
-	        impressaodepedido(pedido);
+	        System.out.println("\nObrigado por fazer seu pedido! Tenha um otimo dia!");
+	        scanner.close();
 	    }
 	}
